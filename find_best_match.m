@@ -9,11 +9,12 @@ function best_x = find_best_match(patch, strip)
     total_size = im_w-t_w;
     count = 0;
     patch = patch / temp_mag;
-    for u=1:(im_w-t_w) % Slide from initial index to final position.
+    down_sample = 5;
+    for u=1:down_sample:(im_w-t_w) % Slide from initial index to final position.
         count = count +1;
         done = 100 * count/total_size;
-        msg = ['Total done:', num2str(done)];
-        disp(msg);
+        %msg = ['Total done:', num2str(done)];
+        %disp(msg);
         patch_strip = strip(:, u:u+t_w-1);
         patch_strip_mag = norm(patch_strip);
         val_matrix = patch .* patch_strip;
